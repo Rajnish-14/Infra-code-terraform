@@ -1,0 +1,9 @@
+name: infracode-terraform
+on:
+  workflow_dispatch:
+jobs:
+  my_first_job:
+    name: My first job
+    runs-on: [rajnish-runner]
+    steps:
+    - run: echo Hello world!
