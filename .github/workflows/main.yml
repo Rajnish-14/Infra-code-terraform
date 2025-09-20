@@ -1,9 +1,23 @@
 name: infracode-terraform
 on:
   workflow_dispatch:
+permissions: read-all
 jobs:
-  my_first_job:
-    name: My first job
+  terraform:
+    name: terrafom init plan apply
     runs-on: [rajnish-runner]
     steps:
-    - run: echo Hello world!
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Terraform Init
+        run: terraform init
+        working-directory: infra/
+        
+      - name: Terraform Format Check
+        run: terraform fmt -check
+        working-directory: infra/
+        
+      - name: Terraform Plan
+        run: terraform plan
+        working-directory: infra/
